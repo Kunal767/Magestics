@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+{% if registered == True %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success</strong> You are successfully Registered to Magestics
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+{% if loginned == True %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success</strong> You are successfully Logged in to Magestics
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+<div class="text-center" style="padding-top: 10px;">
+    <h1 class="site-heading">Welcome to {{ title }}</h1>
+    <p class="site-des">Your Destination For Quality Tutorials and Blogs</p>
+</div>
+<div class="max-width-1 m-auto">
+    <hr>
+</div>
+
+<div class="latest-posts max-width-1 m-auto container">
+    <h2 class="post-headers">Latest Posts</h2>
+    {% for post in post_info %}
+    <div class="post row">
+        {% set fname = 'img/' + post.img %}
+        <div class="col-4 post-img">
+            <img src="{{ url_for('static', filename=fname) }}" alt="Post Image" class="big-img-out">
+        </div>
+        <div class="col-8 post-info">
+            <a href="/post/{{ post.slug }}" class="post-title">{{ post.title }}</a>
+            <p class="post-des">{{ post.content[0:300] }}...</p>
+        </div>
+    </div>
+    <div class="post-small row">
+        <div class="col post-img">
+            <img src="{{ url_for('static', filename=fname) }}" alt="Post Image" class="big-img-out">
+        </div>
+        <div class="col post-info">
+            <a href="/post/{{ post.slug }}" class="post-title">{{ post.title }}</a>
+            <p class="post-des">{{ post.content }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+{% set fname = 'img/' + post.img %}
+
+{% if posted == True %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success</strong> Your Comment got posted Successfully!!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+{% if deleted == True %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Success!!</strong> Your Comment got deleted Successfully!!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+<div class="max-width-1 m-auto">
+    <div class="text-center">
+        <h1 class="post-title-inside">{{post.title}}</h1>
+        <hr>
+        <div class="post-img-inside">
+            <img src="{{ url_for('static', filename=fname) }}" class="big-img" alt="Post Image">
+        </div>
+        <p>{{post.content}}</p>
+    </div>
+    <p><strong>Published on:- {{ post.date }}</strong></p>
+    <hr>
+
+    <div class="comments">
+        {% if data.logged == "True" %}
+        <div class="post-comment">
+            <h3 class="post-comment-header">Post Your Comment</h3>
+            <form action="/post-comment/{{ post.slug }}/{{ data.id }}" method="POST">
+                <textarea name="comment" class="form-control" id="comment" cols="3" rows="2"></textarea>
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Post Comment</button>
+            </form>
+        </div>
+        {% else %}
+        <p class="not-loggined"><strong><a href="/login">Login</a> to Post a Comment</strong></p>
+        {% endif %}
+        <h3 class="comment-header">Comments</h3>
+        {% for comment in all_comments %}
+        <div class="all-comments">
+            <div class="user-icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="user-info">
+                <b class="user-name">{{ comment.name }}</b>
+                <strong class="date-comment">Published on:- {{ comment.date }}</strong>
+                <p class="comment">{{ comment.comment }}</p>
+                {% if comment.vno == data.id %}
+                <form action="/delete-comment/{{ comment.sno }}" method="POST">
+                    <button class="btn btn-danger delete-button">Delete</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

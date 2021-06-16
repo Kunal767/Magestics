@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+{% if invalid == True %}
+
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Failed!!</strong> Invalid Email or Password
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+{% endif %}
+
+<div class="text-center">
+    <h1 class="text-dark reg-heading">Signin to {{ title }} Dashboard</h1>
+</div>
+
+<form class="reg-form" action="/dashboard" method="POST">
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" id="username" required placeholder="Username">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" id="password" required placeholder="Password">
+    </div>
+    <div class="mb-3 text-center" style="padding-top: 20px;">
+        <button class="btn btn-success">Sign in</button>
+    </div>
+</form>
+
+{% endblock %}

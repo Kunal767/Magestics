@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="latest-posts max-width-1 m-auto container">
+    <h2 class="post-headers search-head">Search Results For: {{ search_term }}</h2>
+    {% for post in post_info %}
+    <div class="post row">
+        {% set fname = 'img/' + post.img %}
+        <div class="col-4 post-img">
+            <img src="{{ url_for('static', filename=fname) }}" alt="Post Image" width="300px" >
+        </div>
+        <div class="col-8 post-info">
+            <a href="/post/{{ post.slug }}" class="post-title">{{ post.title }}</a>
+            <p class="post-des">{{ post.content }}</p>
+        </div>
+    </div>
+    <div class="post-small row">
+        <div class="col post-img">
+            <img src="{{ url_for('static', filename=fname) }}" alt="Post Image" width="300px" >
+        </div>
+        <div class="col post-info">
+            <a href="/post/{{ post.slug }}" class="post-title">{{ post.title }}</a>
+            <p class="post-des">{{ post.content }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

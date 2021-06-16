@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="text-center">
+    <h1 class="dash-header">Edit Post - {{ post.title }}</h1>
+</div>
+
+<form class="reg-form" action="/edited-post/{{ post.sno }}" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <textarea name="title" id="title" cols="5" rows="1" class="form-control">{{ post.title }}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">Image</label>
+        <input type="file" class="form-control" name="image" id="image">
+    </div>
+    <div class="mb-3">
+        <label for="content" class="form-label">Content</label>
+        <textarea name="content" id="content" cols="5" rows="10" class="form-control">{{ post.content }}</textarea>
+    </div>
+    <div class="mb-3 text-center" style="padding-top: 20px;">
+        <button type="submit" class="btn btn-success">Save Changes</button>
+    </div>
+</form>
+
+{% endblock  %}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand brand-title text-warning" href="/">{{ title }}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link navbar-links" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navbar-links" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navbar-links" href="/contact-us">Contact Us</a>
+                    </li>
+                </ul>
+                <form class="d-flex" action="/search-post" method="POST">
+                    <input class="form-control me-2" type="search" placeholder="Search" name="search_input"
+                        aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+                {% if data.logged == "True" %}
+                <li class="nav-item profile">
+                    <a class="nav-link text-light ">
+                        <i class="fas fa-user-circle"></i> {{ data.name }}
+                    </a>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#logoutModel">
+                        Logout
+                    </button>
+                </li>
+                <div class="modal fade" id="logoutModel" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Logout From Magestics</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Do you really want to logout from Magestics?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <form action="/logout" method="POST">
+                                    <button type="submit" class="btn btn-danger">Confirm Logout</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <li class="nav-item side-btn">
+                    <a class="btn btn-success" href="/login">Login</a>
+                    <a class="btn btn-primary" style="margin-left: 10px; margin-right:10px;" href="/register">Signup</a>
+                </li>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    {% block body %}
+
+    {% endblock %}
+
+    <div class="text-center p-3 text-light bg-dark">
+        &copy; Copyrights <strong id="year"></strong> | All Rights Reserved | Magestics.com
+    </div>
+
+    <script src="https://kit.fontawesome.com/577dc7a4e9.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <script>
+        current_year = new Date().getFullYear();
+        year_element = document.getElementById('year').innerHTML = current_year;
+        document.getElementsByClassName('post-img-inside').setAttribute("width", "auto")
+    </script>
+</body>
+
+</html>

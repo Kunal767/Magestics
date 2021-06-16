@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+.brand-title{
+    font-family: 'Sigmar One', cursive;
+    font-size: 30px;
+}
+
+.navbar-links{
+    font-family: 'Squada One', cursive;
+    font-size: 20px;
+}
+
+.reg-heading{
+    font-family: 'Squada One', cursive;
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+
+.reg-form{
+    max-width: 50vw;
+    margin: auto;
+    margin-bottom: 12px;
+}
+
+.profile{
+    font-family: 'Squada One', cursive;
+    font-size: 22px;
+}
+
+.contact-item{
+    padding-top: 15px;
+
+}
+.con-heading{
+    font-family: 'Squada One', cursive;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.site-heading{
+    font-family: 'Lobster', cursive;
+    font-size: 60px;
+}
+
+.site-des{
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+}
+
+.max-width-1{
+    max-width: 80vw;
+}
+
+.max-width-1-dash{
+    max-width: 80vw;
+}
+
+.post-headers{
+    font-family: 'Kanit', sans-serif;
+}
+
+.post{
+    display: flex;
+    flex-direction: row;
+    padding: 25px;
+}
+
+.post-title{
+    font-family: 'Squada One', cursive;
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+}
+
+.post-info{
+    padding-left: 45px;
+}
+
+.post-title-inside{
+    margin-top: 23px;
+    font-family: 'Squada One', cursive;
+    font-size: 40px;
+    color: black;
+}
+
+.post-img-inside{
+    padding: 23px;
+}
+
+.user-icon{
+    font-size: 35px;
+}
+
+.all-comments{
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.user-name{
+    margin-left: 15px;
+    margin-top: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.comment{
+    margin-left: 15px;
+    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.post-comment-header{
+    font-family: 'Poppins', sans-serif;
+}
+
+.comment-header{
+    margin-top: 10px;
+}
+
+.not-loggined{
+    font-family: 'Poppins', sans-serif;
+}
+
+.date-comment{
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    margin-left: 4px;
+    padding: 5px;
+    border: 1px solid rgba(109, 104, 104, 0.87);
+    border-radius: 12px;
+    background-color: rgba(109, 104, 104, 0.87);
+    color: white;
+}
+
+.delete-button{
+    margin-left: 15px;
+}
+
+.search-head{
+    margin-top: 23px;
+}
+
+.dash-header{
+    font-family: 'Squada One', cursive;
+    margin-top: 34px;
+    margin-bottom: 45px;
+}
+
+.user-info{
+    margin-top: 12px;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+}
+
+.pagination-bar{
+    padding: 23px;
+    margin-bottom: 45px;
+}
+.float-left{
+    float: left;
+}
+.float-right{
+    float: right;
+}
+
+.big-img{
+    max-width: 60%;
+}
+
+.big-img-out{
+    max-width: 300px;
+    min-width: 300px;
+}
+
+.max-width-2{
+    max-width: 60vw;
+}
+
+.post-small{
+    display: none;
+}
+
+.post{
+    display: flex;
+}
+
+.profile{
+    display: flex;
+    flex-direction: row;
+}
+
+@media only screen and (max-width: 1204px) {
+    .post{
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    .latest-posts{
+        text-align: center;
+    }
+    .post-img{
+        max-width: 100%;
+    }
+    .post-info{
+        width: auto;
+        padding: 0;
+    }
+    .side-btn{
+        margin-top: 10px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+    .big-img{
+        max-width: 100%;
+    }
+    .big-img-out{
+        max-width: 100%;
+    }
+    .profile{
+        margin-top: 12px;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 1202px) {
+    .post-small{
+        display: grid;
+    }
+    .post{
+        display: none;
+    }
+    .big-img-out{
+        max-width: 50%;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    .reg-form{
+        max-width: 80vw;
+    }
+    
+}
+
+@media only screen and (max-width: 776px) {
+    .big-img-out{
+        max-width: 80%;
+    }
+    .max-width-1-dash{
+        max-width: 100vw;
+    }
+}
+
+@media only screen and (max-width: 482px) {
+    .user-info{
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    .date-comment{
+        margin-left: 12px;
+    }
+}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+{% if email_exist == True %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Failed!!</strong> This Email is Already Used by Another Account
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+<div class="text-center">
+    <h1 class="text-dark reg-heading">Register to {{ title }}</h1>
+</div>
+
+<form class="reg-form" action="/registered" method="POST">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="name" name="username" class="form-control" id="name" required placeholder="Your Name">
+    </div>
+    <div class="mb-3">
+        <label for="email_address" class="form-label">Email address</label>
+        <input type="email" name="email" class="form-control" id="email_address" required placeholder="Email">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" id="password" required placeholder="Password">
+    </div>
+    <div class="mb-3 text-center" style="padding-top: 20px;">
+        <button class="btn btn-success">Register</button>
+    </div>
+    <div class="text-center">
+        <p>Already have an account, <a href="/login">Login Here</a></p>
+    </div>
+</form>
+
+{% endblock %}

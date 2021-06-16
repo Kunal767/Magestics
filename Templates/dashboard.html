@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+{% if post_added == True %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success!!</strong> Your Post Got Added Successfully!!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+{% if edited == True %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success!!</strong> Your Changes Got Saved Successfully!!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+{% if deleted == True %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Success!!</strong> Your Post Got Deleted Successfully!!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+<div class="text-center">
+    <h1 class="dash-header">Dashboard of Magestics</h1>
+</div>
+
+<div class="max-width-1-dash m-auto data-container">
+    <div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add Post
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Post</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="/add-post" method="POST" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Title</label>
+                                <input type="text" class="form-control" name="title" id="title" required placeholder="Enter the Title for the Post">
+                            </div>
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Image</label>
+                                <input type="file" required class="form-control" name="image" id="image">
+                            </div>
+                            <div class="mb-3">
+                                <label for="slug" class="form-label">Slug</label>
+                                <input type="text" class="form-control" name="slug" id="slug" required placeholder="Enter the Slug for the Post">
+                            </div>
+                            <div class="mb-3">
+                                <label for="content" class="form-label">Content</label>
+                                <textarea name="content" id="content" cols="10" rows="5" class="form-control" required placeholder="Enter Your Content"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add Post</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-responsive table-striped" style="width: 100%;">
+        <thead>
+            <tr>
+                <th scope="col">Sno</th>
+                <th scope="col">Title</th>
+                <th scope="col">Image</th>
+                <th scope="col">Slug</th>
+                <th scope="col">Content</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+            <tr>
+                <th scope="row">{{ post.sno }}</th>
+                <td>{{ post.title }}</td>
+                <td>{{ post.img }}</td>
+                <td>{{ post.slug }}</td>
+                <td>{{ post.content }}</td>
+                <form action="/edit-post/{{ post.sno }}" method="POST">
+                    <td><button type="submit" class="btn btn-primary">Edit</button></td>
+                </form>
+                <form action="/delete-post/{{ post.sno }}" method="POST">
+                    <td><button type="submit" class="btn btn-danger">Delete</button></td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
